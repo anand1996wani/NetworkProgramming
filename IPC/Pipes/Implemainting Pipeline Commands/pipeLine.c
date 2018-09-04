@@ -23,17 +23,16 @@ int main(){
 		close(pipefd[0]);
 		close(1);
 		dup(pipefd[1]);
-		write(pipefd[1]," anand",6);
-		execlp("ls","ls",(char *)0);
-		sleep(10);
-		exit(0);	
+		//write(pipefd[1]," anand",6);
+		execlp("cat","cat","/etc/passwd",(char *)0);
+		//sleep(10);	
 	}else{
 		//parent Process
 		close(pipefd[1]);
 		close(0);
 		dup(pipefd[0]);
 		//wait(NULL);
-		execlp("wc","wc",(char *)0);	
+		execlp("grep","grep","-i","anand",(char *)0);	
 	}
 	return 0;
 }
