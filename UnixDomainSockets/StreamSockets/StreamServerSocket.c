@@ -33,8 +33,11 @@ int main(int argc,char *argv[]){
 	clientSocketFd = accept(serverSocketFd,NULL,NULL);
 	numRead = read(clientSocketFd,buffer,BUF_SIZE);
 	printf("Data Read From Client Is : %s \n",buffer);
+	printf("Enter Reply For The Client\n");
+	scanf("%s",buffer);
+	write(clientSocketFd,buffer,sizeof(buffer));
 	close(clientSocketFd);
 	close(serverSocketFd);
-	unlink("./server");
+	unlink(argv[1]);
 	return 0;
 }

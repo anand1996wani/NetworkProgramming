@@ -29,6 +29,8 @@ int main(int argc,char *argv[]){
 	printf("Enter Data  : \n");
 	scanf("%s",buffer);
 	write(clientSocketFd,buffer,sizeof(buffer));
+	read(clientSocketFd,buffer,sizeof(buffer));
+	printf("Server Responce Is : %s \n",buffer);
 	close(clientSocketFd);
 	return 0;
 }
